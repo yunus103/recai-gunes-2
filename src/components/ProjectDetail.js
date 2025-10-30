@@ -24,7 +24,7 @@ const ProjectDetail = () => {
   if (!project) {
     return (
       <div className="min-h-screen bg-black flex items-center justify-center">
-        <div className="text-white text-xl">Loading...</div>
+        <div className="text-white text-xl">Yükleniyor...</div>
       </div>
     );
   }
@@ -61,7 +61,7 @@ const ProjectDetail = () => {
             className="inline-flex items-center space-x-2 text-accent hover:text-white transition-colors duration-200 mb-8"
           >
             <ArrowLeft size={20} />
-            <span>Back to Portfolio</span>
+            <span>Portfolyö</span>
           </button>
         </div>
       </div>
@@ -91,7 +91,7 @@ const ProjectDetail = () => {
                     <User size={20} className="text-accent" />
                   </div>
                   <div>
-                    <div className="caption-text text-gray-500 mb-1">Client</div>
+                    <div className="caption-text text-gray-500 mb-1">Müşteri</div>
                     <div className="text-white font-medium">{project.client}</div>
                   </div>
                 </div>
@@ -101,7 +101,7 @@ const ProjectDetail = () => {
                     <Calendar size={20} className="text-accent" />
                   </div>
                   <div>
-                    <div className="caption-text text-gray-500 mb-1">Year</div>
+                    <div className="caption-text text-gray-500 mb-1">Tarih</div>
                     <div className="text-white font-medium">{project.year}</div>
                   </div>
                 </div>
@@ -111,7 +111,7 @@ const ProjectDetail = () => {
                     <Briefcase size={20} className="text-accent" />
                   </div>
                   <div>
-                    <div className="caption-text text-gray-500 mb-1">Role</div>
+                    <div className="caption-text text-gray-500 mb-1">Rol</div>
                     <div className="text-white font-medium">{project.role}</div>
                   </div>
                 </div>
@@ -162,7 +162,7 @@ const ProjectDetail = () => {
       <section className="section-spacing-large bg-dark">
         <div className="container-artworld">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">
-            Project Gallery
+            Proje Galerisi
           </h2>
           
           {/* Thumbnail Navigation */}
@@ -209,7 +209,7 @@ const ProjectDetail = () => {
       <section className="section-spacing">
         <div className="container-artworld">
           <h2 className="text-3xl font-bold text-white mb-12 text-center">
-            More Projects
+            Diğer Projeler
           </h2>
           
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -250,7 +250,7 @@ const ProjectDetail = () => {
               className="btn-inverse"
             >
               <ExternalLink size={16} />
-              View All Projects
+              Tüm Projeler
             </button>
           </div>
         </div>

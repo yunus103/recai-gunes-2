@@ -67,6 +67,7 @@ const PortfolioSection = () => {
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  loading='lazy'
                 />
 
                 {/* Overlay */}
@@ -75,7 +76,14 @@ const PortfolioSection = () => {
                     
                     {/* Category Badge */}
                     <div className="inline-block px-3 py-1 bg-accent/20 backdrop-blur-sm rounded-full mb-3">
-                      <span className="type-indicator text-accent">{item.category}</span>
+                      <span className="type-indicator text-accent">{
+                            item.category === "Food"
+                                ? "Yemek"
+                                : item.category === "Product"
+                                ? "Ürün"
+                                : item.category // Eğer Food veya Product değilse, orijinal değeri göster.
+                            }
+                        </span>
                     </div>
                     
                     {/* Title */}
@@ -93,7 +101,7 @@ const PortfolioSection = () => {
                       onClick={() => navigate(`/project/${item.slug}`)}
                       className="inline-flex items-center space-x-2 text-accent hover:text-white transition-colors duration-200"
                     >
-                      <span className="text-sm font-medium">View Project</span>
+                      <span className="text-sm font-medium">İncele</span>
                       <ExternalLink size={16} />
                     </button>
                   </div>

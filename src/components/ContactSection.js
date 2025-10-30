@@ -131,7 +131,7 @@ const ContactSection = () => {
                     onChange={handleInputChange}
                     required
                     className="bg-dark border-gray-600 text-white focus:border-accent"
-                    placeholder="your@email.com"
+                    placeholder="mail@email.com"
                   />
                 </div>
               </div>
@@ -149,7 +149,7 @@ const ContactSection = () => {
                   onChange={handleInputChange}
                   required
                   className="bg-dark border-gray-600 text-white focus:border-accent"
-                  placeholder="Project inquiry"
+                  placeholder="Proje Konusu"
                 />
               </div>
 
@@ -166,7 +166,7 @@ const ContactSection = () => {
                   required
                   rows={6}
                   className="bg-dark border-gray-600 text-white focus:border-accent resize-none"
-                  placeholder="Tell me about your project, timeline, and any specific requirements..."
+                  placeholder="Bana projenizden, zaman çizelgenizden ve özel gereksinimlerinizden bahseder misiniz?"
                 />
               </div>
 
@@ -205,7 +205,12 @@ const ContactSection = () => {
                     </div>
                     <div>
                       <h4 className="font-medium text-white mb-1">Email</h4>
-                      <p className="text-gray-300">{photographerInfo.email}</p>
+                      <a 
+                        href={`mailto:${photographerInfo.email}`}
+                        className="text-gray-400 hover:text-accent transition-colors duration-200"
+                        >
+                        {photographerInfo.email}
+                    </a>
                     </div>
                   </div>
 

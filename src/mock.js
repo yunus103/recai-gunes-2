@@ -1,4 +1,18 @@
 // Mock data for photographer landing page
+// 1. Tüm resimleri, alt klasörler dahil (true), belirli uzantılarla al
+function importAll(r) {
+  let images = {};
+  // r.keys() artık './iskarmoz/pancar-oreo3.JPG', './cafe-bistro/kahve-tabagi.png' gibi yollar döndürecektir.
+  r.keys().map((item) => { 
+    // item.replace('./', '') işlemi, webpack'in döndürdüğü yolu temizler.
+    images[item.replace('./', '')] = r(item); 
+  });
+  return images;
+}
+
+// Resimlerinizi içeren klasörünüzü ('./assets') belirtin.
+// true: Alt klasörleri ara.
+const allImages = importAll(require.context('./assets', true, /\.(png|jpe?g|svg|JPE?G)$/));
 
 export const photographerInfo = {
   name: "Recai Güneş",
@@ -38,62 +52,74 @@ export const services = [
 export const portfolioItems = [
   {
     id: 1,
-    slug: "artisan-pastries",
+    slug: "iskarmoz",
     category: "Food",
-    title: "Artisan Pastries",
-    image: "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=800&q=80",
-    description: "Fresh bakery collection featuring handcrafted pastries and artisan breads",
-    fullDescription: "A comprehensive photo series showcasing the artistry and craftsmanship behind handmade pastries. This project captured the intricate details of traditional baking techniques, highlighting textures, colors, and the passion that goes into each creation.",
-    client: "Artisan Bakery Co.",
+    title: "Iskarmoz Restoran",
+    image: allImages["iskarmoz/pancar-oreo3.jpg"],
+    description: "Marmara’nın mavisiyle buluşan taze balıklar ve mezeler",
+    fullDescription: "Iskarmoz için yapılan fotoğraf çalışmasında, deniz kenarında konumlanan mekânın huzurlu atmosferi ve deniz ürünlerinin doğal tazeliği sade bir ışık düzeniyle yansıtıldı. Görsellerde balıkların parlaklığı, mezelerin dokuları ve mekanın mavi-tonlu manzarası dijital platformlarda etkili ve net bir görsel dil oluşturacak şekilde ele alındı.",
+    client: "Iskarmoz Restoran",
     year: "2024",
-    role: "Food Photography & Styling",
+    role: "Yemek",
     gallery: [
-      "https://images.unsplash.com/photo-1551024506-0bccd828d307?w=1200&q=80",
-      "https://images.unsplash.com/photo-1509440159596-0249088772ff?w=1200&q=80",
-      "https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1200&q=80",
-      "https://images.unsplash.com/photo-1549903072-7e6e0067da8b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1571115764595-644a1f56a55c?w=1200&q=80",
-      "https://images.unsplash.com/photo-1627308595229-7830a5c91f9f?w=1200&q=80"
+      allImages["iskarmoz/pancar-oreo3.jpg"],
+      allImages["iskarmoz/ege-karmasi3.JPG"],
+      allImages["iskarmoz/fume-yogurt3.JPG"],
+      allImages["iskarmoz/gavur-dag-salatasi3.JPG"],
+      allImages["iskarmoz/kadayifli-jumbo3.JPG"],
+      allImages["iskarmoz/karides-salata3.JPG"],
+      allImages["iskarmoz/lavunya3.JPG"],
+      allImages["iskarmoz/rodos-ezmesi3.JPG"],
+      allImages["iskarmoz/salyangoz3.JPG"]
     ]
   },
   {
     id: 2,
-    slug: "luxury-skincare",
-    category: "Product",
-    title: "Luxury Skincare",
-    image: "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=800&q=80",
-    description: "Premium skincare products with elegant packaging and natural ingredients",
-    fullDescription: "An elegant product photography series for a luxury skincare brand, focusing on clean aesthetics and natural lighting to emphasize the premium quality and organic ingredients.",
-    client: "Pure Skincare Co.",
+    slug: "ekleristan",
+    category: "Food",
+    title: "Ekleristan",
+    image: allImages["ekleristan/ekler-kapak.jpg"],
+    description: "Tatlıyı Sanata Dönüştüren Lezzetler",
+    fullDescription: "Ekleristan için yapılan ürün çekimlerinde markanın taze ve renkli ekler çeşitleri sade bir düzenle öne çıkarıldı. Görsellerde lezzetin detaylarını vurgulayan aydınlatma tercih edilerek dijital platformlarda iştah açıcı ve dikkat çekici bir görünüm elde edildi.",
+    client: "Ekleristan",
     year: "2024",
-    role: "Product Photography & Art Direction",
+    role: "Tatlı",
     gallery: [
-      "https://images.unsplash.com/photo-1556228578-8c89e6adf883?w=1200&q=80",
-      "https://images.unsplash.com/photo-1612817288484-6f916006741a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1570194065650-d99fb4bedf0a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1598440947619-2c35fc9aa908?w=1200&q=80",
-      "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=1200&q=80"
+      allImages["ekleristan/limonlu-.JPG"],
+      allImages["ekleristan/clekli3.jpg"],
+      allImages["ekleristan/cikolatali2.JPG"],
+      allImages["ekleristan/karemelli.JPG"],
+      allImages["ekleristan/limonlu.JPG"],
+      allImages["ekleristan/portakalli.JPG"],
+      allImages["ekleristan/ananasli.jpg"],
+      allImages["ekleristan/elmali-tarcinli.JPG"],
     ]
   },
   {
     id: 3,
-    slug: "gourmet-plating",
+    slug: "coffeeagear",
     category: "Food",
-    title: "Gourmet Plating",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=800&q=80",
+    title: "Coffeeagear",
+    image: allImages["coffeeager/_DSF0117.JPG"],
     description: "Fine dining presentation showcasing culinary artistry and technique",
     fullDescription: "A sophisticated photography project capturing the artistry of fine dining. Each image tells a story of culinary excellence, showcasing the chef\'s technique and the restaurant\'s commitment to visual perfection.",
     client: "Le Bernardin Restaurant",
     year: "2023",
     role: "Food Photography & Styling",
     gallery: [
-      "https://images.unsplash.com/photo-1565299624946-b28f40a0ca4b?w=1200&q=80",
-      "https://images.unsplash.com/photo-1546833999-b9f581a1996d?w=1200&q=80",
-      "https://images.unsplash.com/photo-1559339352-11d035aa65de?w=1200&q=80",
-      "https://images.unsplash.com/photo-1565958011703-44f9829ba187?w=1200&q=80",
-      "https://images.unsplash.com/photo-1484723091739-30a097e8f929?w=1200&q=80",
-      "https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?w=1200&q=80"
+        allImages["coffeeager/_DSF0100.jpg"],
+        allImages["coffeeager/_DSF0108_2.jpg"],
+        allImages["coffeeager/_DSF0126.jpg"],
+        allImages["coffeeager/_DSF0117.JPG"],
+        allImages["coffeeager/_DSF0119_2.jpg"],
+        allImages["coffeeager/_DSF0120_1.jpg"],
+        allImages["coffeeager/_DSF0128.JPG"],
+        allImages["coffeeager/_DSF0132_1.jpg"],
+        allImages["coffeeager/_DSF0135.jpeg"],
+        allImages["coffeeager/_DSF0159.jpeg"],
+        allImages["coffeeager/_DSF0067.jpeg"],
+        allImages["coffeeager/_DSF0074.jpeg"],
+        allImages["coffeeager/_DSF0310.jpeg"]
     ]
   },
   {

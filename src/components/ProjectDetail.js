@@ -125,6 +125,7 @@ const ProjectDetail = () => {
                   src={project.gallery[currentImageIndex]}
                   alt={project.title}
                   className="w-full h-full object-cover"
+                  loading='lazy'
                 />
               </div>
               
@@ -181,6 +182,7 @@ const ProjectDetail = () => {
                   src={image}
                   alt={`${project.title} ${index + 1}`}
                   className="w-full h-full object-cover"
+                  loading='lazy'
                 />
               </button>
             ))}

@@ -1,8 +1,12 @@
 import React from 'react';
 import { Instagram, Linkedin, Globe, ArrowUp } from 'lucide-react';
 import { photographerInfo } from '../mock';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const Footer = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
@@ -11,6 +15,13 @@ const Footer = () => {
   };
 
   const scrollToSection = (sectionId) => {
+    // If we're not on the main page, navigate to main page first
+    if (location.pathname !== '/') {
+      navigate(`/#${sectionId}`);
+      return;
+    }
+    
+    // If we're on the main page, scroll to the section
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });

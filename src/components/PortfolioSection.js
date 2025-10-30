@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
 import { ExternalLink, Filter } from 'lucide-react';
 import { portfolioItems } from '../mock';
+import { useNavigate } from 'react-router-dom';
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('All');
   const [hoveredItem, setHoveredItem] = useState(null);
+  const navigate = useNavigate();
 
   const categories = ['All', 'Food', 'Product'];
   
@@ -87,7 +89,10 @@ const PortfolioSection = () => {
                     </p>
                     
                     {/* View Button */}
-                    <button className="inline-flex items-center space-x-2 text-accent hover:text-white transition-colors duration-200">
+                    <button 
+                      onClick={() => navigate(`/project/${item.slug}`)}
+                      className="inline-flex items-center space-x-2 text-accent hover:text-white transition-colors duration-200"
+                    >
                       <span className="text-sm font-medium">View Project</span>
                       <ExternalLink size={16} />
                     </button>

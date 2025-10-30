@@ -1,9 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const PhotographyHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+
 
   useEffect(() => {
     const handleScroll = () => {
@@ -23,6 +27,14 @@ const PhotographyHeader = () => {
   };
 
   const scrollToSection = (sectionId) => {
+    // If we're not on the main page, navigate to main page first
+    if (location.pathname !== '/') {
+      navigate(`/#${sectionId}`);
+      closeMenu();
+      return;
+    }
+    
+    // If we're on the main page, scroll to the section
     const element = document.getElementById(sectionId);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth' });
@@ -41,7 +53,7 @@ const PhotographyHeader = () => {
           {/* Logo */}
           <div 
             className="artist-name cursor-pointer"
-            onClick={() => scrollToSection('home')}
+            onClick={() => navigate('/')}
           >
             Recai Güneş
           </div>

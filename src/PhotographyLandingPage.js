@@ -8,8 +8,11 @@ import PortfolioSection from './components/PortfolioSection';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
 import './styles/photography.css';
+import { useLocation } from 'react-router-dom';
 
 const PhotographyLandingPage = () => {
+    const location = useLocation();
+
   useEffect(() => {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
@@ -23,6 +26,18 @@ const PhotographyLandingPage = () => {
       document.documentElement.style.scrollBehavior = 'auto';
     };
   }, []);
+  // Handle hash navigation (when coming from project pages)
+  useEffect(() => {
+    if (location.hash) {
+      const elementId = location.hash.substring(1); // Remove the #
+      setTimeout(() => {
+        const element = document.getElementById(elementId);
+        if (element) {
+          element.scrollIntoView({ behavior: 'smooth' });
+        }
+      }, 100); // Small delay to ensure page is loaded
+    }
+  }, [location.hash]);
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden">

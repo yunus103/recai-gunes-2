@@ -1,5 +1,6 @@
 import React from 'react';
 import { photographerInfo } from '../mock';
+import recaiPhoto from '../assets/recai.jpg'
 
 const AboutSection = () => {
   return (
@@ -51,20 +52,13 @@ const AboutSection = () => {
               {/* Main Image */}
               <div className="aspect-[4/5] max-w-[450px] rounded-lg overflow-hidden image-overlay">
                 <img
-                  src="https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80"
+                  src={recaiPhoto}
                   alt="Food photography workspace"
                   className="w-full h-full object-cover"
                 />
               </div>
 
-              {/* Secondary Image - Overlapping */}
-              <div className="absolute -bottom-8 -left-8 w-36 h-36 rounded-lg overflow-hidden glass border-4 border-black">
-                <img
-                  src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=400&q=80"
-                  alt="Product photography setup"
-                  className="w-full h-full object-cover"
-                />
-              </div>
+              
 
               {/* Decorative Elements */}
               <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/10 rounded-full blur-xl"></div>

@@ -44,7 +44,13 @@ const PortfolioSection = () => {
                       : 'text-gray-300 hover:text-white hover:bg-white/10'
                   }`}
                 >
-                  {category}
+                  {category === "Food"
+                                ? "Yemek"
+                                : category === "Product"
+                                ? "Ürün"
+                                : category === "All"
+                                ? "Tüm"
+                                : category}
                 </button>
               ))}
             </div>
@@ -71,8 +77,10 @@ const PortfolioSection = () => {
                 />
 
                 {/* Overlay */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
+                opacity-100 md:opacity-0 
+                group-hover:md:opacity-100 transition-opacity duration-300">
+                  <div className="absolute bottom-0 left-0 right-0 p-6 transform translate-y-0 md:translate-y-4 group-hover:md:translate-y-0 transition-transform duration-300">
                     
                     {/* Category Badge */}
                     <div className="inline-block px-3 py-1 bg-accent/20 backdrop-blur-sm rounded-full mb-3">
@@ -115,12 +123,12 @@ const PortfolioSection = () => {
         </div>
 
         {/* Load More Button */}
-        <div className="text-center mt-16">
+        {/*<div className="text-center mt-16">
           <button className="btn-inverse">
             <Filter size={16} />
             Bütün Projeler
           </button>
-        </div>
+        </div>*/}
       </div>
     </section>
   );

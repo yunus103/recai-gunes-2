@@ -12,7 +12,7 @@ function importAll(r) {
 
 // Resimlerinizi içeren klasörünüzü ('./assets') belirtin.
 // true: Alt klasörleri ara.
-const allImages = importAll(require.context('./assets', true, /\.(png|jpe?g|svg|JPE?G)$/));
+const allImages = importAll(require.context('./assets', true, /\.(png|jpe?g|svg|JPE?G|webp)$/));
 
 export const photographerInfo = {
   name: "Recai Güneş",
@@ -24,7 +24,7 @@ export const photographerInfo = {
   socialLinks: {
     instagram: "https://www.instagram.com/wrecaigns/",
     linkedin: "https://www.linkedin.com/in/recai-güneş-6010b51a7",
-    behance: "https://behance.net/alexcameron"
+    behance: "https://www.behance.net/rgunesoffical"
   }
 };
 
@@ -101,11 +101,10 @@ export const portfolioItems = [
     category: "Food",
     title: "Coffeeagear",
     image: allImages["coffeeager/_DSF0117.JPG"],
-    description: "Fine dining presentation showcasing culinary artistry and technique",
-    fullDescription: "A sophisticated photography project capturing the artistry of fine dining. Each image tells a story of culinary excellence, showcasing the chef\'s technique and the restaurant\'s commitment to visual perfection.",
-    client: "Le Bernardin Restaurant",
+    description: "Zengin kahve deneyimi ve sofistike ekipmanla",
+    fullDescription: "Coffee Ager markası için yapılan çekimlerde, kahve ekipmanlarının detayları ve yüksek kaliteli ürün sunumu sade bir arka planla birleşti. İçerik, dijital platformlara uygun şekilde ürünün dokusu, formu ve premium hissiyatını net bir şekilde iletecek şekilde kurgulandı.",
     year: "2023",
-    role: "Food Photography & Styling",
+    role: "İçecek",
     gallery: [
         allImages["coffeeager/_DSF0100.jpg"],
         allImages["coffeeager/_DSF0108_2.jpg"],
@@ -124,62 +123,102 @@ export const portfolioItems = [
   },
   {
     id: 4,
-    slug: "coffee-collection",
-    category: "Product",
-    title: "Coffee Collection",
-    image: "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80",
-    description: "Artisan coffee beans and brewing equipment for specialty coffee brands",
-    fullDescription: "A warm and inviting photography series showcasing artisan coffee culture. From bean to cup, this project captures the passion and craftsmanship of specialty coffee roasters and their premium equipment.",
-    client: "Craft Coffee Roasters",
+    slug: "usta-katmer",
+    category: "Food",
+    title: "Usta Katmer",
+    image: allImages["usta-katmer/_DSF2723.webp"],
+    description: "Katmerin geleneksel lezzetiyle buluştuğu her kare Usta Katmer’de tatlı bir durak.",
+    fullDescription: "Usta Katmer markası için yapılan ürün çekimlerinde, tatlının ince hamuru, sıcak dokusu ve zengin içeriği sade bir arka planda öne çıkarıldı. Görsellerde kaymak ve nutella gibi malzemelerin parlaklığı ile ürünün iştah açıcı hali dijital platformlar için etkili bir biçimde sunuldu.",
+    client: "Usta Katmer",
     year: "2024",
-    role: "Product Photography & Brand Imagery",
+    role: "Tatlı",
     gallery: [
-      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=1200&q=80",
-      "https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=1200&q=80",
-      "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&q=80",
-      "https://images.unsplash.com/photo-1504627298434-2119808e0d47?w=1200&q=80",
-      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1200&q=80",
-      "https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=1200&q=80"
+      allImages["usta-katmer/_DSF2723.webp"],
+      allImages["usta-katmer/_DSF2669.webp"],
+      allImages["usta-katmer/_DSF2749.webp"],
+      allImages["usta-katmer/_DSF2814.webp"],
+      allImages["usta-katmer/_DSF5194.webp"],
+      allImages["usta-katmer/_DSF2746.webp"],
+      allImages["usta-katmer/_DSF2676.webp"],
+      allImages["usta-katmer/_DSF2735.webp"],
+      allImages["usta-katmer/_DSF2625.webp"],
     ]
   },
   {
     id: 5,
-    slug: "fresh-ingredients",
+    slug: "moso",
     category: "Food",
-    title: "Fresh Ingredients",
-    image: "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=800&q=80",
-    description: "Farm-to-table ingredients captured in their natural beauty",
-    fullDescription: "Celebrating the beauty of fresh, organic ingredients in their most natural state. This series emphasizes sustainability, freshness, and the connection between farm and table through vibrant, natural photography.",
-    client: "Organic Farm Market",
-    year: "2023",
-    role: "Food Photography & Styling",
+    title: "Moso Gelato & Coffee",
+    image: allImages["moso/Tokyo.webp"],
+    description: "Gerçek meyvelerle, ev yapımı dondurmalar — Moso Gelato & Coffee’de doğallık ön planda.",
+    fullDescription: "Moso Gelato & Coffee markası için yapılan çekimlerde, yüksek kaliteli A2 proteinli süt, katkısız meyve içerikleri ve sade zarafeti vurgulayan ürünler minimalist bir ışık düzeninde sunuldu. Görseller dijital platformlarda markanın doğal-rafine kimliğini ve lezzet odaklı yaklaşımını net şekilde iletecek şekilde biçimlendirildi.",
+    client: "Moso Gelato & Coffee",
+    year: "2024",
+    role: "İçecek & Tatlı",
     gallery: [
-      "https://images.unsplash.com/photo-1606787366850-de6330128bfc?w=1200&q=80",
-      "https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=80",
-      "https://images.unsplash.com/photo-1506976785307-8732e854ad03?w=1200&q=80",
-      "https://images.unsplash.com/photo-1518843875459-f738682238a6?w=1200&q=80",
-      "https://images.unsplash.com/photo-1464226184884-fa280b87c399?w=1200&q=80",
-      "https://images.unsplash.com/photo-1522444195799-478538b28823?w=1200&q=80"
+      allImages["moso/Tokyo.webp"],
+      allImages["moso/Affogato.webp"],
+      allImages["moso/Amsterdam.webp"],
+      allImages["moso/Chocolate.webp"],
+      allImages["moso/cilekMatcha.webp"],
+      allImages["moso/ColdBrewLemonade.webp"],
+      allImages["moso/NaneFrozen.webp"],
+      allImages["moso/FındıkÇikolata.webp"],
+      allImages["moso/Tiramisulu.webp"],
+      allImages["moso/Fıstıklı.webp"],
+      allImages["moso/SutluLimon.webp"],
+      allImages["moso/Vanilin.webp"],
     ]
   },
   {
     id: 6,
-    slug: "tech-accessories",
+    slug: "nevada",
     category: "Product",
-    title: "Tech Accessories",
-    image: "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=800&q=80",
+    title: "Nevada Coffee",
+    image: allImages["neva/_DSF7359.webp"],
     description: "Modern technology accessories with sleek design and functionality",
     fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
-    client: "TechStyle Accessories",
+    client: "Nevada Coffee",
     year: "2024",
-    role: "Product Photography & Creative Direction",
+    role: "İçecek",
     gallery: [
-      "https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=1200&q=80",
-      "https://images.unsplash.com/photo-1583394838336-acd977736f90?w=1200&q=80",
-      "https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&q=80",
-      "https://images.unsplash.com/photo-1574920111867-782f7702ac5a?w=1200&q=80",
-      "https://images.unsplash.com/photo-1589492477829-5e65395b66cc?w=1200&q=80",
-      "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=1200&q=80"
+      allImages["neva/_DSF7262.webp"],
+      allImages["neva/_DSF7268.webp"],
+      allImages["neva/_DSF7300.webp"],
+      allImages["neva/_DSF7359.webp"],
+      allImages["neva/_DSF7360.webp"],
+      allImages["neva/_DSF7376.webp"],
+      allImages["neva/_DSF7421.webp"],
+      allImages["neva/_DSF7453.webp"],
+      allImages["neva/_DSF7492.webp"]
+    ]
+  },
+  {
+    id: 7,
+    slug: "paqo",
+    category: "Food",
+    title: "Paqo Bakery & Coffee",
+    image: allImages["paqo/macha.webp"],
+    description: "Modern technology accessories with sleek design and functionality",
+    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
+    client: "Paqo Bakery & Coffee",
+    year: "2024",
+    role: "İçecek & Tatlı",
+    gallery: [
+      allImages["paqo/macha.webp"],
+      allImages["paqo/brown.webp"],
+      allImages["paqo/cilek-ma.webp"],
+      allImages["paqo/dubai.webp"],
+      allImages["paqo/gelin.webp"],
+      allImages["paqo/kruv.webp"],
+      allImages["paqo/latte.webp"],
+      allImages["paqo/mganol.webp"],
+      allImages["paqo/mojito.webp"],
+      allImages["paqo/mus.webp"],
+      allImages["paqo/prof.webp"],
+      allImages["paqo/san.webp"],
+      allImages["paqo/sponful.webp"],
+      allImages["paqo/tiramisu.webp"],
     ]
   }
 ];

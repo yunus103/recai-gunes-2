@@ -65,7 +65,7 @@ const ContactSection = () => {
           </div>
           <h2 className="hero-title text-4xl mb-6">
             Hadi Birlikte 
-            <span className="text-accent block">Harika Bir Şey Yaratalım</span>
+            <span className="text-accent block">Harika Şeyler Yaratalım</span>
           </h2>
           <p className="body-text text-gray-300 max-w-2xl mx-auto">
             Fikrinizi gerçeğe dönüştürmeye hazır mısınız? Projeniz hakkında konuşmayı ve markanız için etkileyici görseller yaratmayı çok isterim.

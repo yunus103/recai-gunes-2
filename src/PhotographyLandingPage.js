@@ -48,8 +48,8 @@ const PhotographyLandingPage = () => {
       <main>
         <HeroSection />
         <AboutSection />
-        <ServicesSection />
         <PortfolioSection />
+        <ServicesSection />
         <ContactSection />
       </main>
       

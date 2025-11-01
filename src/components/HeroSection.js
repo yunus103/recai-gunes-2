@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ArrowRight, Instagram, Linkedin, Globe } from 'lucide-react';
 import { photographerInfo } from '../mock';
+import Fade from 'react-reveal/Fade';
 
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -49,10 +50,12 @@ const HeroSection = () => {
       </div>
 
       {/* Content */}
+      <Fade bottom>
       <div className="container-artworld relative z-10">
         <div className="grid lg:grid-cols-2 gap-12 items-center min-h-screen py-20">
           {/* Left Content */}
           <div className="space-y-8 animate-fade-in-up">
+            <Fade up delay={500}>
             <div>
               <h1 className="hero-title text-white mb-4">
                 {photographerInfo.name}
@@ -65,7 +68,7 @@ const HeroSection = () => {
             <p className="body-text text-gray-200 max-w-xl leading-relaxed">
               {photographerInfo.bio}
             </p>
-
+        </Fade>
             <div className="flex flex-col sm:flex-row gap-4">
               <button
                 onClick={() => scrollToSection('portfolio')}
@@ -83,13 +86,11 @@ const HeroSection = () => {
               </button>
             </div>
           </div>
-
-          {/* Right Content - Featured Image */}
           
           
         </div>
       </div>
-
+    </Fade>
       {/* Social Links - Vertical */}
       <div className="absolute right-8 top-1/2 -translate-y-1/2 hidden lg:block">
         <div className="flex flex-col items-center space-y-6">
@@ -135,6 +136,7 @@ const HeroSection = () => {
           <div className="w-1 h-3 bg-accent rounded-full mt-2 animate-pulse"></div>
         </div>
       </div>
+
     </section>
   );
 };

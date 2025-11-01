@@ -2,6 +2,7 @@ import React from 'react';
 import { Instagram, Linkedin, Globe, ArrowUp } from 'lucide-react';
 import { photographerInfo } from '../mock';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
 
 const Footer = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const Footer = () => {
 
   return (
     <footer className="bg-dark border-t border-accent/20">
+    <Fade bottom>
       <div className="container-artworld">
         {/* Main Footer Content */}
         <div className="py-16 grid lg:grid-cols-4 gap-12">
@@ -125,7 +127,7 @@ const Footer = () => {
         {/* Bottom Footer */}
         <div className="border-t border-white/10 py-6 flex flex-col md:flex-row justify-between items-center">
           <p className="caption-text text-gray-500 text-center md:text-left">
-            © 2025 {photographerInfo.name}. All rights reserved.
+            © 2025. All rights reserved. Made by Yunus Emre Aytekin.
           </p>
           
           <div className="flex items-center space-x-6 mt-4 md:mt-0">
@@ -139,6 +141,7 @@ const Footer = () => {
           </div>
         </div>
       </div>
+      </Fade>
     </footer>
   );
 };

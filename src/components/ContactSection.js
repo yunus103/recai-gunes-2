@@ -6,6 +6,7 @@ import { Textarea } from './ui/textarea';
 import { toast } from 'sonner';
 import { photographerInfo } from '../mock';
 import emailjs from "@emailjs/browser";
+import Fade from 'react-reveal/Fade';
 
 const ContactSection = () => {
   const [formData, setFormData] = useState({
@@ -57,6 +58,7 @@ const ContactSection = () => {
   }
   return (
     <section id="contact" className="section-spacing-large">
+      <Fade top>
       <div className="container-artworld">
         {/* Header */}
         <div className="text-center mb-16">
@@ -251,6 +253,7 @@ const ContactSection = () => {
           </div>
         </div>
       </div>
+      </Fade>
     </section>
   );
 };

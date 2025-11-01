@@ -1,10 +1,14 @@
 import React from 'react';
 import { photographerInfo } from '../mock';
 import recaiPhoto from '../assets/recai.jpg'
+import Slide from 'react-reveal/Slide';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 
 const AboutSection = () => {
   return (
     <section id="about" className="section-spacing-large bg-dark">
+    <Slide left duration={600}>
       <div className="container-artworld">
         <div className="grid lg:grid-cols-2 gap-24 items-center">
           {/* Left Content */}
@@ -50,6 +54,7 @@ const AboutSection = () => {
           <div className="animate-slide-in-right">
             <div className="relative">
               {/* Main Image */}
+              <Zoom clear>
               <div className="aspect-[4/5] max-w-[450px] rounded-lg overflow-hidden image-overlay">
                 <img
                   src={recaiPhoto}
@@ -57,7 +62,7 @@ const AboutSection = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-
+            </Zoom>
               
 
               {/* Decorative Elements */}
@@ -68,6 +73,7 @@ const AboutSection = () => {
         </div>
 
         {/* Quote Section */}
+        <Fade up delay={500} duration={600}>
         <div className="mt-24 text-center">
           <blockquote className="text-2xl lg:text-3xl font-light text-gray-200 italic max-w-4xl mx-auto leading-relaxed">
             "Her şeyin bir hikayesi vardır. Benim işim, o hikayeyi tek bir karede, sessizce ama en etkili şekilde anlatmak."
@@ -77,7 +83,9 @@ const AboutSection = () => {
             <div className="caption-text mt-2">{photographerInfo.title}</div>
           </div>
         </div>
+        </Fade>
       </div>
+      </Slide>
     </section>
   );
 };

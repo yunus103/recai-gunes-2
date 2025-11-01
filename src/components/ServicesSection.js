@@ -1,6 +1,9 @@
 import React from 'react';
 import { UtensilsCrossed, Camera, Sparkles, ArrowRight, Check } from 'lucide-react';
 import { services } from '../mock';
+import Slide from 'react-reveal/Slide';
+import Zoom from 'react-reveal/Zoom';
+import Fade from 'react-reveal/Fade';
 
 const ServicesSection = () => {
   const iconMap = {
@@ -18,6 +21,7 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="section-spacing-large bg-dark">
+    <Slide right>
       <div className="container-artworld">
         {/* Header */}
         <div className="text-center mb-16">
@@ -38,6 +42,7 @@ const ServicesSection = () => {
             const IconComponent = iconMap[service.icon];
             
             return (
+            <Zoom cascade>
               <div 
                 key={service.id}
                 className={`group glass rounded-2xl p-8 hover:bg-accent/5 transition-all duration-300 animate-fade-in-up hover:transform hover:-translate-y-2`}
@@ -80,6 +85,7 @@ const ServicesSection = () => {
                   <ArrowRight size={16} className="group-hover/btn:translate-x-1 transition-transform duration-200" />
                 </button>
               </div>
+              </Zoom>
             );
           })}
         </div>
@@ -118,6 +124,7 @@ const ServicesSection = () => {
                 description: 'Yüksek kaliteli düzenlenmiş görsellerin teslimi.'
               }
             ].map((step, index) => (
+            <Fade left delay={index * 100} key={step.step} duration={500}>
               <div key={index} className="text-center group">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors duration-300">
                   <span className="text-xl font-bold text-accent">{step.step}</span>
@@ -125,10 +132,12 @@ const ServicesSection = () => {
                 <h4 className="text-lg font-semibold text-white mb-2">{step.title}</h4>
                 <p className="caption-text text-gray-400">{step.description}</p>
               </div>
+              </Fade>
             ))}
           </div>
         </div>
       </div>
+      </Slide>
     </section>
   );
 };

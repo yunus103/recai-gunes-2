@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
+import Fade from 'react-reveal/Fade';
 
 const PhotographyHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -43,6 +44,7 @@ const PhotographyHeader = () => {
   };
 
   return (
+    <Fade top>
     <header 
       className={`fixed top-0 w-full z-50 transition-all duration-300 ${
         isScrolled ? 'glass' : 'bg-black/20'
@@ -115,6 +117,7 @@ const PhotographyHeader = () => {
         </div>
       </div>
     </header>
+    </Fade>
   );
 };
 

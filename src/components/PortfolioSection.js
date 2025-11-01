@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ExternalLink, Filter } from 'lucide-react';
 import { portfolioItems } from '../mock';
 import { useNavigate } from 'react-router-dom';
+import Slide from 'react-reveal/Slide';
+import Fade from 'react-reveal/Fade';
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -16,6 +18,7 @@ const PortfolioSection = () => {
 
   return (
     <section id="portfolio" className="section-spacing-large">
+    <Fade bottom>
       <div className="container-artworld">
         {/* Header */}
         <div className="text-center mb-16">
@@ -56,10 +59,10 @@ const PortfolioSection = () => {
             </div>
           </div>
         </div>
-
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredItems.map((item, index) => (
+            <Fade bottom delay={index * 100} key={item.id} duration={500}>
             <div 
               key={item.id}
               className={`group animate-fade-in-up`}
@@ -119,6 +122,7 @@ const PortfolioSection = () => {
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-accent/50 rounded-lg transition-colors duration-300 pointer-events-none"></div>
               </div>
             </div>
+            </Fade>
           ))}
         </div>
 
@@ -130,6 +134,7 @@ const PortfolioSection = () => {
           </button>
         </div>*/}
       </div>
+      </Fade>
     </section>
   );
 };

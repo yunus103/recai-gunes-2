@@ -138,10 +138,7 @@ export const portfolioItems = [
       allImages["usta-katmer/_DSF2749.webp"],
       allImages["usta-katmer/_DSF2814.webp"],
       allImages["usta-katmer/_DSF5194.webp"],
-      allImages["usta-katmer/_DSF2746.webp"],
-      allImages["usta-katmer/_DSF2676.webp"],
-      allImages["usta-katmer/_DSF2735.webp"],
-      allImages["usta-katmer/_DSF2625.webp"],
+      allImages["usta-katmer/_DSF2746.webp"]
     ]
   },
   {
@@ -172,29 +169,6 @@ export const portfolioItems = [
   },
   {
     id: 6,
-    slug: "nevada",
-    category: "Product",
-    title: "Nevada Coffee",
-    image: allImages["neva/_DSF7359.webp"],
-    description: "Modern technology accessories with sleek design and functionality",
-    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
-    client: "Nevada Coffee",
-    year: "2024",
-    role: "İçecek",
-    gallery: [
-      allImages["neva/_DSF7262.webp"],
-      allImages["neva/_DSF7268.webp"],
-      allImages["neva/_DSF7300.webp"],
-      allImages["neva/_DSF7359.webp"],
-      allImages["neva/_DSF7360.webp"],
-      allImages["neva/_DSF7376.webp"],
-      allImages["neva/_DSF7421.webp"],
-      allImages["neva/_DSF7453.webp"],
-      allImages["neva/_DSF7492.webp"]
-    ]
-  },
-  {
-    id: 7,
     slug: "paqo",
     category: "Food",
     title: "Paqo Bakery & Coffee",
@@ -220,32 +194,124 @@ export const portfolioItems = [
       allImages["paqo/sponful.webp"],
       allImages["paqo/tiramisu.webp"],
     ]
-  }
+  },
+  {
+    id: 7,
+    slug: "ercan",
+    category: "Food",
+    title: "Ercan Steakhouse",
+    image: allImages["ercan/et.webp"],
+    description: "Modern technology accessories with sleek design and functionality",
+    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
+    client: "Ercan Steakhouse",
+    year: "2024",
+    role: "Yemek",
+    gallery: [
+      allImages["ercan/et.webp"],
+      allImages["ercan/et2.webp"],
+      allImages["ercan/image.webp"],
+      allImages["ercan/mekan.webp"],
+      allImages["ercan/mekan2.webp"],
+      allImages["ercan/mekan3.webp"],
+    ]
+  },
+  {
+    id: 8,
+    slug: "massmavi",
+    category: "Food",
+    title: "Massmavi Balık Restaurant",
+    image: allImages["mavi/kapak.webp"],
+    description: "Modern technology accessories with sleek design and functionality",
+    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
+    client: "Massmavi Balık Restaurant",
+    year: "2024",
+    role: "Yemek",
+    gallery: [
+      allImages["mavi/kapak.webp"],
+      allImages["mavi/mavi2.webp"],
+      allImages["mavi/mavi1.webp"],
+      allImages["mavi/mavi3.webp"],
+      allImages["mavi/mavi4.webp"],
+      allImages["mavi/mavi5.webp"],
+      allImages["mavi/mavi6.webp"],
+      allImages["mavi/mavi7.webp"],
+      allImages["mavi/mavi8.webp"],
+    ]
+  },
+  {
+    id: 9,
+    slug: "beyza",
+    category: "Food",
+    title: "Beyza Piliç",
+    image: allImages["beyza/beyza1.webp"],
+    description: "Modern technology accessories with sleek design and functionality",
+    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
+    client: "Beyza Piliç",
+    year: "2024",
+    role: "Yemek",
+    gallery: [
+        allImages["beyza/beyza1.webp"],
+        allImages["beyza/beyza2.webp"],
+        allImages["beyza/beyza3.webp"],
+        allImages["beyza/beyza4.webp"],
+        allImages["beyza/beyza5.webp"],
+        allImages["beyza/beyza6.webp"],
+        allImages["beyza/beyza7.webp"],
+        allImages["beyza/beyza8.webp"],
+        allImages["beyza/beyza9.webp"],
+        allImages["beyza/beyza10.webp"],
+        allImages["beyza/beyza11.webp"],
+        allImages["beyza/beyza12.webp"],
+
+    ]
+  },
+  {
+    id: 10,
+    slug: "chef-erdal",
+    category: "Food",
+    title: "Chef Erdal",
+    image: allImages["erdal/erdal9.webp"],
+    description: "Modern technology accessories with sleek design and functionality",
+    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
+    client: "Chef Erdal Adana Kebap ",
+    year: "2024",
+    role: "Yemek",
+    gallery: [
+        allImages["erdal/erdal9.webp"],
+        allImages["erdal/erdal1.webp"],
+        allImages["erdal/erdal2.webp"],
+        allImages["erdal/erdal3.webp"],
+        allImages["erdal/erdal4.webp"],
+        allImages["erdal/erdal5.webp"],
+        allImages["erdal/erdal6.webp"],
+        allImages["erdal/erdal7.webp"],
+        allImages["erdal/erdal8.webp"],
+        allImages["erdal/erdal10.webp"],
+    ]
+  },
+  {
+    id: 11,
+    slug: "barbisos",
+    category: "Food",
+    title: "Barbisos",
+    image: allImages["barbisos/barbisos1.webp"],
+    description: "Modern technology accessories with sleek design and functionality",
+    fullDescription: "A minimalist approach to technology product photography, emphasizing clean lines, modern aesthetics, and the innovative design of contemporary tech accessories.",
+    client: "Barbisos",
+    year: "2024",
+    role: "Yemek",
+    gallery: [
+        allImages["barbisos/barbisos5.webp"],
+        allImages["barbisos/barbisos1.webp"],
+        allImages["barbisos/barbisos2.webp"],
+        allImages["barbisos/barbisos3.webp"],
+        allImages["barbisos/barbisos4.webp"],
+        allImages["barbisos/barbisos6.webp"],
+        allImages["barbisos/barbisos7.webp"],
+        allImages["barbisos/barbisos8.webp"],
+        allImages["barbisos/barbisos9.webp"],
+    ]
+  },
+
 ];
 
-export const testimonials = [
-  {
-    id: 1,
-    name: "Sarah Mitchell",
-    role: "Restaurant Owner",
-    company: "The Artisan Table",
-    text: "Alex's food photography transformed our menu presentation. Our online orders increased by 40% after using his stunning images.",
-    avatar: "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=100&q=80"
-  },
-  {
-    id: 2,
-    name: "Marcus Johnson",
-    role: "Brand Manager",
-    company: "Pure Skincare Co.",
-    text: "The product shots Alex created perfectly captured our brand's essence. His attention to detail and lighting is exceptional.",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80"
-  },
-  {
-    id: 3,
-    name: "Emily Chen",
-    role: "Marketing Director",
-    company: "Craft Coffee Roasters",
-    text: "Working with Alex was seamless. He understood our vision and delivered images that elevated our entire brand identity.",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80"
-  }
-];

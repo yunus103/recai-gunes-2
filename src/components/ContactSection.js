@@ -58,8 +58,9 @@ const ContactSection = () => {
   }
   return (
     <section id="contact" className="section-spacing-large">
-      <Fade top>
+      
       <div className="container-artworld">
+        <Fade top distance='40px'>
         {/* Header */}
         <div className="text-center mb-16">
           <div className="type-indicator text-accent mb-4">
@@ -252,8 +253,9 @@ const ContactSection = () => {
             </div>
           </div>
         </div>
+        </Fade>
       </div>
-      </Fade>
+      
     </section>
   );
 };

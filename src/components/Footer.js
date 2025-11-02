@@ -31,8 +31,8 @@ const Footer = () => {
 
   return (
     <footer className="bg-dark border-t border-accent/20">
-    <Fade bottom>
       <div className="container-artworld">
+        <Fade bottom distance='50px'>
         {/* Main Footer Content */}
         <div className="py-16 grid lg:grid-cols-4 gap-12">
           {/* Brand Section */}
@@ -140,8 +140,8 @@ const Footer = () => {
             </button>
           </div>
         </div>
+        </Fade>
       </div>
-      </Fade>
     </footer>
   );
 };

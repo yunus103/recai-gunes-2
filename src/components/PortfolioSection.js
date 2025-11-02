@@ -2,8 +2,8 @@ import React, { useState } from 'react';
 import { ExternalLink, Filter } from 'lucide-react';
 import { portfolioItems } from '../mock';
 import { useNavigate } from 'react-router-dom';
-import Slide from 'react-reveal/Slide';
 import Fade from 'react-reveal/Fade';
+
 
 const PortfolioSection = () => {
   const [activeFilter, setActiveFilter] = useState('All');
@@ -18,8 +18,8 @@ const PortfolioSection = () => {
 
   return (
     <section id="portfolio" className="section-spacing-large">
-    <Fade bottom>
       <div className="container-artworld">
+        <Fade bottom>
         {/* Header */}
         <div className="text-center mb-16">
           <div className="type-indicator text-accent mb-4">
@@ -59,26 +59,27 @@ const PortfolioSection = () => {
             </div>
           </div>
         </div>
+        </Fade>
         {/* Portfolio Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredItems.map((item, index) => (
-            <Fade bottom delay={index * 100} key={item.id} duration={500}>
             <div 
               key={item.id}
               className={`group animate-fade-in-up`}
               style={{ animationDelay: `${index * 100}ms` }}
               onMouseEnter={() => setHoveredItem(item.id)}
               onMouseLeave={() => setHoveredItem(null)}
+              onClick={() => navigate(`/project/${item.slug}`)}
             >
               <div className="relative aspect-[4/5] rounded-lg overflow-hidden cursor-pointer">
+             
                 {/* Image */}
                 <img
                   src={item.image}
                   alt={item.title}
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                   loading='lazy'
-                />
-
+                /> 
                 {/* Overlay */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent 
                 opacity-100 md:opacity-0 
@@ -117,12 +118,11 @@ const PortfolioSection = () => {
                     </button>
                   </div>
                 </div>
-
+            
                 {/* Hover Border Effect */}
                 <div className="absolute inset-0 border-2 border-transparent group-hover:border-accent/50 rounded-lg transition-colors duration-300 pointer-events-none"></div>
               </div>
             </div>
-            </Fade>
           ))}
         </div>
 
@@ -133,8 +133,8 @@ const PortfolioSection = () => {
             Bütün Projeler
           </button>
         </div>*/}
-      </div>
-      </Fade>
+
+       </div>
     </section>
   );
 };

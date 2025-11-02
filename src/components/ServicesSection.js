@@ -21,9 +21,10 @@ const ServicesSection = () => {
 
   return (
     <section id="services" className="section-spacing-large bg-dark">
-    <Slide right>
+    
       <div className="container-artworld">
         {/* Header */}
+        <Slide right>
         <div className="text-center mb-16">
           <div className="type-indicator text-accent mb-4">
             Hizmetler
@@ -35,14 +36,14 @@ const ServicesSection = () => {
             Markanızı yükseltmek ve hedef kitlenizle etkileşim kuran etkileyici görsel hikayeler yaratmak için tasarlanmış uzmanlaşmış fotoğrafçılık hizmetleri.
           </p>
         </div>
-
+    </Slide>
         {/* Services Grid */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {services.map((service, index) => {
             const IconComponent = iconMap[service.icon];
             
             return (
-            <Zoom cascade>
+            <Zoom cascade duration={600}>
               <div 
                 key={service.id}
                 className={`group glass rounded-2xl p-8 hover:bg-accent/5 transition-all duration-300 animate-fade-in-up hover:transform hover:-translate-y-2`}
@@ -124,7 +125,7 @@ const ServicesSection = () => {
                 description: 'Yüksek kaliteli düzenlenmiş görsellerin teslimi.'
               }
             ].map((step, index) => (
-            <Fade left delay={index * 100} key={step.step} duration={500}>
+            <Fade left delay={index * 50} key={step.step} duration={500}>
               <div key={index} className="text-center group">
                 <div className="w-16 h-16 bg-accent/10 rounded-full flex items-center justify-center mx-auto mb-4 group-hover:bg-accent/20 transition-colors duration-300">
                   <span className="text-xl font-bold text-accent">{step.step}</span>
@@ -137,7 +138,6 @@ const ServicesSection = () => {
           </div>
         </div>
       </div>
-      </Slide>
     </section>
   );
 };

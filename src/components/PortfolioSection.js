@@ -10,7 +10,7 @@ const PortfolioSection = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const navigate = useNavigate();
 
-  const categories = ['All', 'Food', 'Product'];
+  const categories = ['All', 'Food', 'Diğer'];
   
   const filteredItems = activeFilter === 'All' 
     ? portfolioItems 

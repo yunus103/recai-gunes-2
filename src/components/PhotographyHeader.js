@@ -64,7 +64,7 @@ const PhotographyHeader = () => {
             className="artist-name cursor-pointer"
             onClick={() => navigate('/')}
           >
-            <img src={Logo} className="max-w-[280px] w-full h-auto"/>
+            <img src={Logo} className="max-w-[280px] w-full h-auto ml-4 md:ml-0"/>
           </div>
 
           {/* Desktop Navigation */}

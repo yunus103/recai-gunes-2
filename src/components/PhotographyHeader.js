@@ -61,10 +61,10 @@ const PhotographyHeader = () => {
             Recai Güneş
           </div> */}
           <div 
-            className="artist-name cursor-pointer"
+            className="artist-name cursor-pointer flex justify-center w-full md:w-auto"
             onClick={() => navigate('/')}
           >
-            <img src={Logo} className="max-w-[280px] w-full h-auto ml-4 md:ml-0"/>
+            <img src={Logo} className="max-w-[280px] w-full h-auto"/>
           </div>
 
           {/* Desktop Navigation */}

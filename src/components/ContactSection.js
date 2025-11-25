@@ -66,7 +66,7 @@ const ContactSection = () => {
           <div className="type-indicator text-accent mb-4">
             İletişime Geç
           </div>
-          <h2 className="hero-title text-4xl mb-6">
+          <h2 className="hero-title project-detail text-4xl mb-6">
             Hadi Birlikte 
             <span className="text-accent block">Harika Şeyler Yaratalım</span>
           </h2>

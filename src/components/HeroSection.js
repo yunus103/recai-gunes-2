@@ -6,6 +6,7 @@ import localImage from '../assets/hero/sushi2.jpg';
 import localImage2 from '../assets/hero/lahmacun.jpeg';
 import localImage3 from '../assets/hero/et.jpg';
 import localImage4 from '../assets/hero/urun.jpg';
+import localImage5 from '../assets/hero/sweet.jpg';
 
 const HeroSection = () => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
@@ -13,6 +14,7 @@ const HeroSection = () => {
   const backgroundImages = [
     localImage, 
     localImage2, 
+    localImage5, 
     localImage3, 
     localImage4, 
   ];

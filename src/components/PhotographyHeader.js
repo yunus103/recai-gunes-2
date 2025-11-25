@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Fade from 'react-reveal/Fade';
+import Logo from '../assets/logo1.png';
 
 const PhotographyHeader = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -53,11 +54,17 @@ const PhotographyHeader = () => {
       <div className="container-artworld">
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
-          <div 
+          {/* <div 
             className="artist-name cursor-pointer"
             onClick={() => navigate('/')}
           >
             Recai Güneş
+          </div> */}
+          <div 
+            className="artist-name cursor-pointer"
+            onClick={() => navigate('/')}
+          >
+            <img src={Logo} className="max-w-[280px] w-full h-auto"/>
           </div>
 
           {/* Desktop Navigation */}

@@ -76,7 +76,7 @@ const ProjectDetail = () => {
                 <div className="type-indicator text-accent mb-4">
                   {project.category}
                 </div>
-                <h1 className="hero-title text-4xl lg:text-5xl mb-6">
+                <h1 className="hero-title project-detail text-4xl lg:text-5xl mb-6">
                   {project.title}
                 </h1>
                 <p className="body-text text-gray-300 text-lg leading-relaxed">

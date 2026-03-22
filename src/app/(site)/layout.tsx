@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Inter, Outfit } from 'next/font/google'
 import '../globals.css'
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/client'
 import { siteSettingsQuery } from '@/sanity/lib/queries'
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
@@ -12,7 +12,7 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export async function generateMetadata(): Promise<Metadata> {
-  const settings = await client.fetch(siteSettingsQuery, {}, { cache: 'no-store' })
+  const settings = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'] })
 
   if (!settings) {
     return {
@@ -35,7 +35,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode
 }>) {
-  const settings = await client.fetch(siteSettingsQuery, {}, { cache: 'no-store' })
+  const settings = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'] })
 
   return (
     <html lang="tr" className={`${inter.variable} ${outfit.variable} dark`} suppressHydrationWarning>

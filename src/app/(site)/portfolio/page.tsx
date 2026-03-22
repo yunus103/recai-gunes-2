@@ -1,14 +1,12 @@
-import { client } from '@/sanity/lib/client'
+import { sanityFetch } from '@/sanity/lib/client'
 import { allPortfoliosQuery, portfolioPageQuery } from '@/sanity/lib/queries'
 import Link from 'next/link'
 import SanityImage from '@/components/ui/SanityImage'
 
-export const revalidate = 60
-
 export default async function Portfolio() {
   const [pageData, portfolios] = await Promise.all([
-    client.fetch(portfolioPageQuery),
-    client.fetch(allPortfoliosQuery)
+    sanityFetch({ query: portfolioPageQuery, tags: ['portfolioPage'] }),
+    sanityFetch({ query: allPortfoliosQuery, tags: ['portfolio'] })
   ])
 
   return (

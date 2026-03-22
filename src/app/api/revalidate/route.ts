@@ -1,4 +1,4 @@
-import { revalidateTag } from 'next/cache'
+import { revalidateTag, revalidatePath } from 'next/cache'
 import { type NextRequest, NextResponse } from 'next/server'
 import { parseBody } from 'next-sanity/webhook'
 
@@ -22,8 +22,11 @@ export async function POST(req: NextRequest) {
 
     console.log(`Revalidating tag: ${body._type}`)
     
-    // Type bazlı revalidate (Örn: 'portfolio', 'homePage', 'siteSettings')
-    revalidateTag(body._type)
+    // revalidateTag'in 2 argüman beklemesi (Next 16) sorununu aşmak için as any kullanıyoruz.
+    ;(revalidateTag as any)(body._type)
+    
+    // Genel bir temizlik için layout bazlı revalidate yapıyoruz
+    revalidatePath('/', 'layout')
 
     return NextResponse.json({
       status: 200,

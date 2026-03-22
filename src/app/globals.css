@@ -1,0 +1,133 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    box-sizing: border-box;
+    cursor: none; /* Hide default cursor for custom cursor */
+  }
+
+  /* Next.js Error Overlay Fix - Restore cursor on error overlays and portals */
+  [data-nextjs-dialog-overlay],
+  [data-nextjs-dialog-overlay] *,
+  #nextjs-portal,
+  #nextjs-portal *,
+  .nextjs-toast-errors-parent,
+  .nextjs-toast-errors-parent * {
+    cursor: auto !important;
+  }
+  
+  html {
+    overflow-x: hidden;
+  }
+  
+  body {
+    @apply bg-background text-foreground tracking-wide font-sans overflow-x-hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display tracking-tight text-white;
+  }
+
+  
+  /* Lenis recommended css */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overscroll-behavior: contain;
+  }
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+}
+
+/* Texture Overlay */
+.noise {
+  position: fixed;
+  top: -50%;
+  left: -50%;
+  right: -50%;
+  bottom: -50%;
+  width: 200%;
+  height: 200vh;
+  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
+  background-repeat: repeat;
+  animation: grain 8s steps(10) infinite;
+  z-index: 9999;
+  opacity: 0.35;
+  pointer-events: none;
+}
+
+/* yet-another-react-lightbox: keep custom cursor active inside lightbox */
+.yarl__root,
+.yarl__root * {
+  cursor: none !important;
+}
+
+/* Isolate lightbox from page — prevent scroll/content bleed */
+.yarl__root {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 99990 !important;
+  isolation: isolate;
+}
+
+/* Active thumbnail gets the gold accent border */
+.yarl__thumbnails_thumbnail_active,
+.yarl__thumbnail_active {
+  border-color: #dab37e !important;
+  opacity: 1 !important;
+}
+
+/* Dim inactive thumbnails slightly */
+.yarl__thumbnails_thumbnail:not(.yarl__thumbnails_thumbnail_active) {
+  opacity: 0.55;
+  transition: opacity 0.2s ease;
+}
+.yarl__thumbnails_thumbnail:not(.yarl__thumbnails_thumbnail_active):hover {
+  opacity: 0.85;
+}
+
+/* Counter — top-left, small caps */
+.yarl__counter {
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.5);
+  padding: 12px 16px;
+}
+
+/* Fallback visible cursor on touch devices or custom cursor failure */
+@media (hover: none) and (pointer: coarse) {
+  * {
+    cursor: auto !important;
+  }
+}
+
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -5%); }
+  20% { transform: translate(-10%, 5%); }
+  30% { transform: translate(5%, -10%); }
+  40% { transform: translate(-5%, 15%); }
+  50% { transform: translate(-10%, 5%); }
+  60% { transform: translate(15%, 0); }
+  70% { transform: translate(0, 10%); }
+  80% { transform: translate(-15%, 0); }
+  90% { transform: translate(10%, 5%); }
+}

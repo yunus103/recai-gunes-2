@@ -150,8 +150,7 @@ export default function Hero({ data }: { data?: any }) {
           transition={{ duration: 1.5, delay: 0.8 }}
           className="text-white/70 md:text-xl font-light max-w-2xl mx-auto mb-14 leading-relaxed"
         >
-          {/* Using hardcoded text as fallback since schema doesn't have it yet */}
-          Ödüllü yemek ve editoryal fotoğrafçılık ile anılarınızı sanata dönüştürüyoruz.
+          {data?.heroDescription || 'Yemek ve ürünleriniz için temiz, modern ve etkileyici görsel çözümler. İşinizi olduğu gibi, ama en iyi haliyle gösterelim.'}
         </motion.p>
         
         <motion.div

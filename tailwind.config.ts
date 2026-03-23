@@ -63,7 +63,7 @@ export default {
   		keyframes: {
   			marquee: {
   				'0%': { transform: 'translateX(0%)' },
-  				'100%': { transform: 'translateX(-100%)' }
+  				'100%': { transform: 'translateX(-50%)' }
   			},
         grain: {
           '0%, 100%': { transform: 'translate(0,0)' },

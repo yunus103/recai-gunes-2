@@ -31,8 +31,9 @@ export default function FeaturedMasonry({ portfolios, data }: { portfolios?: any
         id: p._id,
         title: p.title,
         cat: p.category,
+        // i=0: Large (2x2), i=1,2: Medium (1x2), 3-6: Small (1x1)
         size: i === 0 ? 'large' : (i === 1 || i === 2 ? 'medium' : 'small'),
-        sanityImage: p.coverImage, // full Sanity image object for SanityImage component
+        sanityImage: p.coverImage, 
         alt: p.coverImage?.alt || p.title,
         slug: p.slug
       }))

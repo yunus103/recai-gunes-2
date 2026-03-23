@@ -37,6 +37,13 @@ export const portfolio = defineType({
       initialValue: false,
     }),
     defineField({
+      name: 'order',
+      title: 'Sıralama (Vitrin)',
+      type: 'number',
+      description: 'Ana sayfadaki vitrin sıralaması (Düşük sayı başa gelir: 1, 2, 3..)',
+      initialValue: 10,
+    }),
+    defineField({
       name: 'coverImage',
       title: 'Kapak Görseli',
       type: 'image',

@@ -116,7 +116,7 @@ export const contactPageQuery = groq`
 `
 
 export const featuredPortfoliosQuery = groq`
-  *[_type == "portfolio" && showOnHomepage == true] | order(_createdAt desc)[0...6] {
+  *[_type == "portfolio" && showOnHomepage == true] | order(order asc, _createdAt desc)[0...7] {
     _id,
     title,
     "slug": slug.current,

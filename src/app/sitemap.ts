@@ -3,7 +3,7 @@ import { client } from '@/sanity/lib/client'
 import { allPortfoliosQuery } from '@/sanity/lib/queries'
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://recaigunes.com'
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://recaigunes.com').replace(/\/$/, '')
   
   const portfolios = await client.fetch(allPortfoliosQuery)
   

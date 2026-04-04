@@ -5,6 +5,8 @@ export const siteSettingsQuery = groq`
     title,
     description,
     "logoUrl": logo.asset->url,
+    "faviconUrl": favicon.asset->url,
+    "ogImageUrl": ogImage.asset->url,
     email,
     phone,
     address,

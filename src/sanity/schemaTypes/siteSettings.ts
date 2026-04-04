@@ -20,9 +20,22 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'logo',
-      title: 'Site Logosu',
+      title: 'Site Logosu (Header)',
       type: 'image',
+      description: 'Sitenin üst kısmında (header) görünecek ana logo.',
       options: { hotspot: true },
+    }),
+    defineField({
+      name: 'favicon',
+      title: 'Sekme Logosu (Favicon)',
+      type: 'image',
+      description: 'Tarayıcı sekmelerinde görünecek ikon. Önerilen boyut: 512x512px kare görsel.',
+    }),
+    defineField({
+      name: 'ogImage',
+      title: 'Sosyal Medya Paylaşım Görseli (OG Image)',
+      type: 'image',
+      description: 'Siteniz paylaşıldığında (WhatsApp, Twitter, LinkedIn vb.) görünecek ana görsel. Önerilen boyut: 1200x630px.',
     }),
     defineField({
       name: 'email',

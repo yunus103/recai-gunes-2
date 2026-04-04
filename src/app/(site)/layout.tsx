@@ -12,21 +12,37 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' })
 const outfit = Outfit({ subsets: ['latin'], variable: '--font-outfit' })
 
 export async function generateMetadata(): Promise<Metadata> {
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://recaigunes.com').replace(/\/$/, '')
   const settings = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'] })
 
   if (!settings) {
     return {
+      metadataBase: new URL(baseUrl),
       title: 'Recai Güneş | Portfolio',
       description: 'Photography Portfolio',
     }
   }
 
   return {
+    metadataBase: new URL(baseUrl),
     title: {
       template: `%s | ${settings.title}`,
       default: settings.title,
     },
     description: settings.description,
+    openGraph: {
+      title: settings.title,
+      description: settings.description,
+      url: baseUrl,
+      siteName: settings.title,
+      locale: 'tr_TR',
+      type: 'website',
+      images: settings.ogImageUrl ? [{ url: settings.ogImageUrl, width: 1200, height: 630 }] : [],
+    },
+    icons: {
+      icon: settings.faviconUrl || '/favicon.ico',
+      apple: settings.faviconUrl || '/apple-touch-icon.png',
+    },
   }
 }
 

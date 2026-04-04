@@ -46,7 +46,7 @@ export default function AboutStats({ data }: { data?: any }) {
             </div>
             {/* Signature Overlay */}
             <div className="absolute bottom-6 left-6 z-10">
-              <span className="font-script text-4xl text-white transform -rotate-12 drop-shadow-lg inline-block">
+              <span className="font-script text-4xl text-white transform drop-shadow-lg inline-block">
                 Recai Güneş
               </span>
             </div>

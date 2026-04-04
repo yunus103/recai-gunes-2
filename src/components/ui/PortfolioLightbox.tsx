@@ -10,6 +10,8 @@ import 'yet-another-react-lightbox/plugins/counter.css'
 interface LightboxImage {
   src: string
   alt?: string
+  srcSet?: { src: string; width: number; height: number }[]
+  thumbnail?: string
 }
 
 interface PortfolioLightboxProps {
@@ -30,6 +32,8 @@ export default function PortfolioLightbox({
   const slides = images.map((img) => ({
     src: img.src,
     alt: img.alt ?? '',
+    srcSet: img.srcSet,
+    thumbnail: img.thumbnail,
   }))
 
   return (

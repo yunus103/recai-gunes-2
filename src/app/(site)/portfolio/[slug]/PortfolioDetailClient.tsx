@@ -106,7 +106,7 @@ export default function PortfolioDetailClient({ portfolio, related }: Props) {
               <span className="text-white/30 text-xs uppercase tracking-widest">{allImages.length} kare</span>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 grid-flow-dense">
               {allImages.map((img: any, i: number) => (
                 <motion.button
                   key={img._key || i}
@@ -116,7 +116,7 @@ export default function PortfolioDetailClient({ portfolio, related }: Props) {
                   transition={{ duration: 0.5, delay: i * 0.05 }}
                   onClick={() => openLightbox(i)}
                   className={`relative overflow-hidden bg-card rounded-sm group cursor-pointer
-                    ${i % 7 === 0 ? 'col-span-2 row-span-2 aspect-square' : 'aspect-[4/5]'}
+                    ${i % 7 === 0 ? 'col-span-2 row-span-2 aspect-[4/5]' : 'aspect-[4/5]'}
                   `}
                   aria-label={`Fotoğraf ${i + 1}`}
                 >
@@ -187,10 +187,21 @@ export default function PortfolioDetailClient({ portfolio, related }: Props) {
 
       {/* Lightbox */}
       <PortfolioLightbox
-        images={allImages.map((img: any) => ({
-          src: urlForImage(img).width(1600).url(),
-          alt: img.alt || portfolio.title || '',
-        }))}
+        images={allImages.map((img: any) => {
+          const dimensions = img.asset?.metadata?.dimensions || { width: 1600, height: 1200 }
+          const ratio = dimensions.height / dimensions.width
+          
+          return {
+            src: urlForImage(img).width(1600).auto('format').url(),
+            alt: img.alt || portfolio.title || '',
+            thumbnail: urlForImage(img).width(200).height(150).auto('format').fit('crop').url(),
+            srcSet: [
+              { src: urlForImage(img).width(800).auto('format').url(), width: 800, height: Math.round(800 * ratio) },
+              { src: urlForImage(img).width(1200).auto('format').url(), width: 1200, height: Math.round(1200 * ratio) },
+              { src: urlForImage(img).width(1600).auto('format').url(), width: 1600, height: Math.round(1600 * ratio) },
+            ]
+          }
+        })}
         startingSlideIndex={lightboxIndex ?? 0}
         open={lightboxIndex !== null}
         onClose={closeLightbox}

@@ -43,11 +43,12 @@ export default function Footer({ settings }: { settings: any }) {
               rel="noopener noreferrer" 
               className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all duration-300"
               title={link.platform}
+              aria-label={link.platform || 'Sosyal Medya Bağlantısı'}
             >
               {getSocialIcon(link.platform)}
             </a>
           ))}
-          <a href={`mailto:${settings?.email || 'hello@recaigunes.com'}`} className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all duration-300">
+          <a href={`mailto:${settings?.email || 'hello@recaigunes.com'}`} aria-label="E-posta gönder" className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center text-gold hover:bg-gold hover:text-white transition-all duration-300">
             <Mail size={16}/>
           </a>
         </div>

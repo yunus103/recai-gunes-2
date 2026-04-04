@@ -56,23 +56,6 @@
   }
 }
 
-/* Texture Overlay */
-.noise {
-  position: fixed;
-  top: -50%;
-  left: -50%;
-  right: -50%;
-  bottom: -50%;
-  width: 200%;
-  height: 200vh;
-  background: transparent url('http://assets.iceable.com/img/noise-transparent.png') repeat 0 0;
-  background-repeat: repeat;
-  animation: grain 8s steps(10) infinite;
-  z-index: 9999;
-  opacity: 0.35;
-  pointer-events: none;
-}
-
 /* yet-another-react-lightbox: keep custom cursor active inside lightbox */
 .yarl__root,
 .yarl__root * {

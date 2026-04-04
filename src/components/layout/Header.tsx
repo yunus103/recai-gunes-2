@@ -44,15 +44,16 @@ export default function Header({ settings }: { settings: any }) {
         isScrolled || isMobileMenuOpen ? 'py-2 bg-[#050505]/90 backdrop-blur-lg border-b border-white/5' : 'py-4 bg-transparent'
       )}
     >
-      <div className="container mx-auto px-6 md:px-12 flex items-center justify-between">
+      <div className="container mx-auto px-6 md:px-8 lg:px-12 flex items-center justify-between">
         <Magnetic>
           <Link href="/" className="relative z-50 block">
             {settings?.logoUrl ? (
-              <div className="relative h-16 md:h-20 w-56 md:w-80">
+              <div className="relative h-16 md:h-20 w-56 md:w-60 lg:w-80">
                 <Image
                   src={settings.logoUrl}
                   alt={settings.title || 'Recai Güneş'}
                   fill
+                  sizes="(max-width: 768px) 224px, 320px"
                   className="object-contain object-left"
                   priority
                 />
@@ -66,7 +67,7 @@ export default function Header({ settings }: { settings: any }) {
         </Magnetic>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex gap-10 items-center">
+        <nav className="hidden md:flex gap-4 lg:gap-10 items-center">
           {navLinks.map((link) => {
             const isActive = pathname === link.href || (link.href !== '/' && pathname.startsWith(link.href))
             return (
@@ -74,7 +75,7 @@ export default function Header({ settings }: { settings: any }) {
                 <Link 
                   href={link.href}
                   className={clsx(
-                    'text-xs font-semibold tracking-[0.2em] transition-colors relative group py-2',
+                    'text-xs font-semibold tracking-[0.2em] transition-colors relative inline-block group py-2 whitespace-nowrap',
                     isActive ? 'text-gold' : 'text-white hover:text-gold/80'
                   )}
                 >
@@ -99,6 +100,7 @@ export default function Header({ settings }: { settings: any }) {
           <button
             className="md:hidden relative z-50 p-2 text-white"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            aria-label="Menüyü aç/kapat"
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>

@@ -57,7 +57,6 @@ export default async function RootLayout({
     <html lang="tr" className={`${inter.variable} ${outfit.variable} dark`} suppressHydrationWarning>
       <body className="antialiased min-h-screen flex flex-col relative selection:bg-amber-500/30 selection:text-amber-500" suppressHydrationWarning>
         <SmoothScroller>
-          <div className="noise" />
           <CustomCursor />
           <Header settings={settings} />
           <main className="flex-1 z-10 relative">{children}</main>

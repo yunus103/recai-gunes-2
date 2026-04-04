@@ -56,7 +56,7 @@ export default function FeaturedMasonry({ portfolios, data }: { portfolios?: any
       </div>
 
       <motion.div style={{ y }} className="container mx-auto px-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 auto-rows-[300px]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-10 auto-rows-auto md:auto-rows-[300px]">
           {displayItems.map((item: any, i: number) => (
             <motion.div
               key={item.id}
@@ -64,9 +64,9 @@ export default function FeaturedMasonry({ portfolios, data }: { portfolios?: any
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: "-100px" }}
               transition={{ duration: 0.8, delay: i * 0.1, ease: [0.16, 1, 0.3, 1] }}
-              className={`relative group overflow-hidden cursor-pointer bg-card rounded-md
-                ${item.size === 'large' ? 'md:col-span-2 lg:col-span-2 row-span-2' : ''}
-                ${item.size === 'medium' ? 'row-span-2' : 'row-span-1'}
+              className={`relative group overflow-hidden cursor-pointer bg-card rounded-md aspect-[4/5] md:aspect-auto
+                ${item.size === 'large' ? 'md:col-span-2 lg:col-span-2 md:row-span-2' : ''}
+                ${item.size === 'medium' ? 'md:row-span-2' : 'md:row-span-1'}
               `}
             >
               {/* Sanity Image or dark placeholder */}

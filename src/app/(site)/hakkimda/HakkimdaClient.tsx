@@ -7,13 +7,6 @@ import SanityImage from '@/components/ui/SanityImage'
 import Breadcrumb from '@/components/ui/Breadcrumb'
 
 export default function HakkimdaClient({ data }: { data?: any }) {
-  const defaultEquipment = [
-    { category: 'Kameralar', items: ['Sony A7R V', 'Sony A7 IV', 'Fujifilm GFX 100S'] },
-    { category: 'Lensler', items: ['90mm Macro f/2.8', '24-70mm f/2.8 GM II', '50mm f/1.2 GM'] },
-    { category: 'Işıklandırma', items: ['Profoto B10X Plus', 'Aputure 600d Pro', 'Godox AD600Pro'] }
-  ]
-  const equipment = data?.equipmentList?.length > 0 ? data.equipmentList : defaultEquipment
-
   const defaultBioFirst = "Gastronomi dünyasının estetiğini, editoryal bir gözle yakalamaya odaklanmış bir görsel sanatçıyım."
   
   return (
@@ -89,31 +82,6 @@ export default function HakkimdaClient({ data }: { data?: any }) {
             )}
           </motion.div>
         </div>
-
-        {/* Equipment & Tech Section */}
-        <section className="py-24 border-y border-white/5 mb-32">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-16">
-            {equipment.map((group: any, i: number) => (
-              <motion.div
-                key={group.category}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-              >
-                <h3 className="text-gold uppercase tracking-widest text-xs font-bold mb-8">{group.category}</h3>
-                <ul className="space-y-4">
-                  {group.items.map((item: string) => (
-                    <li key={item} className="text-lg font-light text-foreground/80 flex items-center gap-3">
-                      <div className="w-1.5 h-1.5 rounded-full bg-gold/50" />
-                      {item}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            ))}
-          </div>
-        </section>
 
         {/* Philosophy - CTA */}
         <div className="text-center max-w-3xl mx-auto py-24">

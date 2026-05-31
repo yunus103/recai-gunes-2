@@ -1,56 +1,111 @@
-'use client'
+import { notFound } from 'next/navigation'
+import BlogDetailClient from './BlogDetailClient'
+import type { Metadata } from 'next'
 
-import { motion } from 'framer-motion'
-import Link from 'next/link'
-import { ArrowLeft } from 'lucide-react'
+const BLOG_POSTS: Record<string, {
+  title: string
+  date: string
+  isoDate: string
+  cat: string
+  subtitle: string
+  content: string[]
+}> = {
+  'yemek-fotografciligi-isik': {
+    title: 'Yemek Fotoğrafçılığında Işık Kullanımı',
+    date: '12 Mart 2024',
+    isoDate: '2024-03-12',
+    cat: 'Teknik',
+    subtitle: 'Işık, fotoğrafçının fırçasıdır. Doğru ışıkla sıradan bir tabak, bir sanat eserine dönüşebilir.',
+    content: [
+      'Yemek fotoğrafçılığında ışığın rolü, sadece nesneyi görünür kılmak değil, onun dokusunu, rengini ve sıcaklığını izleyiciye hissettirmektir. Çekim yapılırken ışığın yönü, sertliği ve rengi büyük önem taşır.',
+      'Pek çok profesyonel yemek fotoğrafçısı için en iyi ışık kaynağı, büyük bir pencereden gelen yumuşak gün ışığıdır. Ters ışık (backlight) tekniği, ürünün dokusunu ve üzerinden çıkan buharı yakalamak için idealdir.',
+      'Yapay ışık kullanıldığında ise, softboxlar ve difüzörler yardımıyla bu doğal yumuşaklığın taklit edilmesi hedeflenir. Gölgelerin derinliği, tabağın üç boyutlu görünmesini sağlar.'
+    ]
+  },
+  'editoryal-kompozisyon': {
+    title: 'Editoryal Çekimlerde Kompozisyon Kuralları',
+    date: '05 Mart 2024',
+    isoDate: '2024-03-05',
+    cat: 'Sanat',
+    subtitle: 'Görsel bir hikaye anlatmanın sırrı, ögeleri doğru yerleştirmektir.',
+    content: [
+      'Editoryal yemek fotoğrafçılığı, sadece tabağı değil, o tabağın etrafındaki dünyayı, malzemeleri ve duyguyu da yansıtmayı amaçlar. Kompozisyonda üçler kuralı (rule of thirds) en temel rehberdir.',
+      'Negatif alan (negative space) kullanımı, izleyicinin gözünü ana nesneye (yemeğe) yönlendirmek için harika bir yöntemdir. Ayrıca çapraz yerleşimler ve hareket hissi (aksiyon anları) görsele dinamizm katar.',
+      'Aksesuarların (çatal, peçete, arka plan dokuları) yemeğin rengi ve tarzıyla uyumlu olması, hikayeyi zenginleştiren en önemli katmanlardandır.'
+    ]
+  },
+  'sony-a7rv-inceleme': {
+    title: 'Sony A7R V İncelemesi: Bir Fotoğrafçının Gözünden',
+    date: '28 Şubat 2024',
+    isoDate: '2024-02-28',
+    cat: 'Ekipman',
+    subtitle: '61 megapiksel çözünürlük ve yapay zeka destekli otofokus sistemi yemek fotoğrafçılığında ne sunuyor?',
+    content: [
+      'Sony A7R V, özellikle stüdyo ve detay çekimleri yapan profesyoneller için tam bir canavar. 61 MP çözünürlük sayesinde, tabaktaki en ufak sos detayını, dokuyu ve renk geçişlerini kusursuz şekilde yakalayabiliyorsunuz.',
+      'Yeni AI (Yapay Zeka) destekli otofokus ünitesi, nesneleri tanımada inanılmaz derecede kararlı. Piksel kaydırmalı çoklu çekim modu ise, sıfır harelenme ile inanılmaz derecede keskin görseller sunuyor.',
+      'Yemek stüdyosunda veya konsept çekimlerde, bu yüksek detay gücü müşterilerimize devasa baskılarda ve detay kırpmalarında inanılmaz esneklik sağlıyor.'
+    ]
+  }
+}
 
-export default function BlogPostDetail({ params }: { params: { slug: string } }) {
+export async function generateStaticParams() {
+  return Object.keys(BLOG_POSTS).map((slug) => ({
+    slug,
+  }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params
+  const post = BLOG_POSTS[slug]
+  if (!post) return {}
+
+  return {
+    title: post.title,
+    description: post.subtitle,
+    alternates: {
+      canonical: `/blog/${slug}`,
+    },
+  }
+}
+
+export default async function BlogPostDetailPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params
+  const post = BLOG_POSTS[slug]
+
+  if (!post) notFound()
+
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://recaigunes.com').replace(/\/$/, '')
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'BlogPosting',
+    'headline': post.title,
+    'description': post.subtitle,
+    'datePublished': post.isoDate,
+    'author': {
+      '@type': 'Person',
+      'name': 'Recai Güneş',
+      'jobTitle': 'Yemek ve Ürün Fotoğrafçısı',
+      'url': baseUrl
+    },
+    'publisher': {
+      '@type': 'Organization',
+      'name': 'Recai Güneş',
+      'url': baseUrl
+    },
+    'mainEntityOfPage': {
+      '@type': 'WebPage',
+      '@id': `${baseUrl}/blog/${slug}`
+    }
+  }
+
   return (
-    <div className="pt-32 pb-24 bg-background min-h-screen">
-      <div className="container mx-auto px-6 max-w-3xl">
-        
-        <motion.div
-          initial={{ opacity: 0, x: -10 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="mb-16"
-        >
-          <Link href="/blog" className="flex items-center gap-2 text-xs uppercase tracking-widest text-gold hover:text-white transition-colors group">
-            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" /> BLOG'A DÖN
-          </Link>
-        </motion.div>
-
-        <article className="space-y-12">
-          <header className="space-y-6">
-             <div className="flex gap-4 text-[10px] uppercase tracking-widest text-white/40">
-                <span>Sanat</span>
-                <span>•</span>
-                <span>12 Mart 2024</span>
-             </div>
-             <h1 className="font-display text-4xl md:text-6xl tracking-tight leading-tight">Yemek Fotoğrafçılığında Işık Kullanımı</h1>
-             <p className="text-xl text-foreground/70 font-light leading-relaxed italic">
-                Işık, fotoğrafçının fırçasıdır. Doğru ışıkla sıradan bir tabak, bir sanat eserine dönüşebilir.
-             </p>
-          </header>
-
-          <div className="aspect-[21/9] bg-card border border-white/5 rounded-sm relative overflow-hidden">
-             <div className="absolute inset-0 bg-gradient-to-br from-gold/5 to-transparent" />
-          </div>
-
-          <div className="prose prose-invert prose-gold max-w-none font-light leading-relaxed text-foreground/80 space-y-6">
-             <p>
-                Yemek fotoğrafçılığında ışığın rolü, sadece nesneyi görünür kılmak değil, onun dokusunu, rengini ve sıcaklığını izleyiciye hissettirmektir. Çekim yapılırken ışığın yönü, sertliği ve rengi büyük önem taşır.
-             </p>
-             <h2 className="font-display text-3xl text-white pt-8 italic">Doğal Işığın Gücü</h2>
-             <p>
-                Pek çok profesyonel yemek fotoğrafçısı için en iyi ışık kaynağı, büyük bir pencereden gelen yumuşak gün ışığıdır. Ters ışık (backlight) tekniği, ürünün dokusunu ve üzerinden çıkan buharı yakalamak için idealdir.
-             </p>
-             <p>
-                Yapay ışık kullanıldığında ise, softboxlar ve difüzörler yardımıyla bu doğal yumuşaklığın taklit edilmesi hedeflenir. Gölgelerin derinliği, tabağın üç boyutlu görünmesini sağlar.
-             </p>
-          </div>
-        </article>
-
-      </div>
-    </div>
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+      <BlogDetailClient post={post} />
+    </>
   )
 }

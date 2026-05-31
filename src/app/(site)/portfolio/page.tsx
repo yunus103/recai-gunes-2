@@ -2,6 +2,18 @@ import { sanityFetch } from '@/sanity/lib/client'
 import { allPortfoliosQuery, portfolioPageQuery } from '@/sanity/lib/queries'
 import Link from 'next/link'
 import SanityImage from '@/components/ui/SanityImage'
+import type { Metadata } from 'next'
+
+export async function generateMetadata(): Promise<Metadata> {
+  const pageData = await sanityFetch({ query: portfolioPageQuery, tags: ['portfolioPage'] })
+  return {
+    title: pageData?.title || 'Portfolyo',
+    description: pageData?.description || 'Yemek ve ürün fotoğrafçılığı, menü çekimleri ve sanatsal gastronomi projelerimizin yer aldığı portfolyomuz.',
+    alternates: {
+      canonical: '/portfolio',
+    },
+  }
+}
 
 export default async function Portfolio() {
   const [pageData, portfolios] = await Promise.all([

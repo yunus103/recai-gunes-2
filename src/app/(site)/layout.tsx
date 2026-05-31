@@ -15,26 +15,41 @@ export async function generateMetadata(): Promise<Metadata> {
   const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://recaigunes.com').replace(/\/$/, '')
   const settings = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'] })
 
+  const defaultTitle = 'Recai Güneş | Yemek ve Ürün Fotoğrafçısı'
+  const defaultDescription = 'Profesyonel yemek ve ürün fotoğrafçılığı, gastronomi çekimleri, konsept ürün çekimleri ve yemek stilistliği hizmetleri.'
+
   if (!settings) {
     return {
       metadataBase: new URL(baseUrl),
-      title: 'Recai Güneş | Portfolio',
-      description: 'Photography Portfolio',
+      title: {
+        template: `%s | Recai Güneş`,
+        default: defaultTitle,
+      },
+      description: defaultDescription,
+      alternates: {
+        canonical: baseUrl,
+      },
     }
   }
+
+  const titleText = settings.title || defaultTitle
+  const descText = settings.description || defaultDescription
 
   return {
     metadataBase: new URL(baseUrl),
     title: {
-      template: `%s | ${settings.title}`,
-      default: settings.title,
+      template: `%s | ${settings.title || 'Recai Güneş'}`,
+      default: titleText,
     },
-    description: settings.description,
+    description: descText,
+    alternates: {
+      canonical: baseUrl,
+    },
     openGraph: {
-      title: settings.title,
-      description: settings.description,
+      title: titleText,
+      description: descText,
       url: baseUrl,
-      siteName: settings.title,
+      siteName: settings.title || 'Recai Güneş',
       locale: 'tr_TR',
       type: 'website',
       images: settings.ogImageUrl ? [{ url: settings.ogImageUrl, width: 1200, height: 630 }] : [],
@@ -52,9 +67,57 @@ export default async function RootLayout({
   children: React.ReactNode
 }>) {
   const settings = await sanityFetch({ query: siteSettingsQuery, tags: ['siteSettings'] })
+  const baseUrl = (process.env.NEXT_PUBLIC_SITE_URL || 'https://recaigunes.com').replace(/\/$/, '')
+  
+  const email = settings?.email || 'info@recaigunes.com'
+  const phone = settings?.phone || '0536 601 9436'
+  const address = settings?.address || 'İstanbul, Türkiye'
+  const description = settings?.description || 'Profesyonel yemek ve ürün fotoğrafçılığı, gastronomi çekimleri, konsept ürün çekimleri ve yemek stilistliği hizmetleri.'
+  const logo = settings?.logoUrl || settings?.faviconUrl || ''
+  const sameAs = settings?.socialLinks?.map((link: any) => link.url) || []
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@graph': [
+      {
+        '@type': 'WebSite',
+        '@id': `${baseUrl}/#website`,
+        'url': baseUrl,
+        'name': settings?.title || 'Recai Güneş',
+        'description': description,
+        'publisher': {
+          '@id': `${baseUrl}/#photographer`
+        }
+      },
+      {
+        '@type': 'Photographer',
+        '@id': `${baseUrl}/#photographer`,
+        'name': 'Recai Güneş',
+        'url': baseUrl,
+        'logo': logo,
+        'image': settings?.ogImageUrl || logo,
+        'description': 'Profesyonel Yemek ve Ürün Fotoğrafçısı',
+        'email': email,
+        'telephone': phone,
+        'address': {
+          '@type': 'PostalAddress',
+          'streetAddress': address,
+          'addressLocality': 'İstanbul',
+          'addressCountry': 'TR'
+        },
+        'sameAs': sameAs
+      }
+    ]
+  }
 
   return (
     <html lang="tr" className={`${inter.variable} ${outfit.variable} dark`} suppressHydrationWarning>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body className="antialiased min-h-screen flex flex-col relative selection:bg-amber-500/30 selection:text-amber-500" suppressHydrationWarning>
         <SmoothScroller>
           <CustomCursor />

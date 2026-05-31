@@ -118,23 +118,25 @@ export const contactPageQuery = groq`
 `
 
 export const featuredPortfoliosQuery = groq`
-  *[_type == "portfolio" && showOnHomepage == true] | order(order asc, _createdAt desc)[0...7] {
-    _id,
-    title,
-    "slug": slug.current,
-    "category": category->title,
-    coverImage {
-      alt,
-      objectPosition,
-      hotspot,
-      crop,
-      asset-> {
-        _id,
-        url,
-        metadata { lqip, dimensions }
+  *[_type == "homePage"][0] {
+    "featuredPortfolios": featuredPortfolios[]-> {
+      _id,
+      title,
+      "slug": slug.current,
+      "category": category->title,
+      coverImage {
+        alt,
+        objectPosition,
+        hotspot,
+        crop,
+        asset-> {
+          _id,
+          url,
+          metadata { lqip, dimensions }
+        }
       }
     }
-  }
+  }.featuredPortfolios[0...8]
 `
 
 export const portfolioBySlugQuery = groq`

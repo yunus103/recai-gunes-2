@@ -17,22 +17,26 @@ export default function FeaturedMasonry({ portfolios, data }: { portfolios?: any
 
   // Fallback items with placeholder backgrounds (no external URLs)
   const defaultItems = [
-    { id: 1, title: 'Luxury Burger', cat: 'Gıda', size: 'large' },
-    { id: 2, title: 'Whiskey Pour', cat: 'İçecek', size: 'small' },
+    { id: 1, title: 'Luxury Burger', cat: 'Gıda', size: 'medium' },
+    { id: 2, title: 'Whiskey Pour', cat: 'İçecek', size: 'medium' },
     { id: 3, title: 'Fine Dining Set', cat: 'Editorial', size: 'medium' },
     { id: 4, title: 'Espresso Art', cat: 'İçecek', size: 'medium' },
     { id: 5, title: 'Chef at Work', cat: 'Portre', size: 'small' },
+    { id: 6, title: 'Fresh Brew', cat: 'İçecek', size: 'small' },
+    { id: 7, title: 'Gourmet Pizza', cat: 'Gıda', size: 'small' },
+    { id: 8, title: 'Sweet Treat', cat: 'Editorial', size: 'small' },
   ]
 
-  const isSanityData = portfolios && portfolios.length > 0
+  const validPortfolios = portfolios ? portfolios.filter((p: any) => p !== null && p !== undefined && p._id) : []
+  const isSanityData = validPortfolios.length > 0
   
   const displayItems = isSanityData
-    ? portfolios.map((p, i) => ({
+    ? validPortfolios.map((p: any, i: number) => ({
         id: p._id,
         title: p.title,
         cat: p.category,
-        // i=0: Large (2x2), i=1,2: Medium (1x2), 3-6: Small (1x1)
-        size: i === 0 ? 'large' : (i === 1 || i === 2 ? 'medium' : 'small'),
+        // i=0,1,2,3: Medium (1x2), 4-7: Small (1x1)
+        size: i >= 0 && i <= 3 ? 'medium' : 'small',
         sanityImage: p.coverImage, 
         alt: p.coverImage?.alt || p.title,
         slug: p.slug

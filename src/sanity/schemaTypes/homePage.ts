@@ -42,6 +42,19 @@ export const homePage = defineType({
       description: 'Ana sayfada arka planda dönen veya gösterilen görseller.',
     }),
     defineField({
+      name: 'featuredPortfolios',
+      title: 'Öne Çıkan Portfolyolar (Maks 8 Adet)',
+      type: 'array',
+      of: [
+        {
+          type: 'reference',
+          to: [{ type: 'portfolio' }],
+        },
+      ],
+      validation: (Rule: any) => Rule.max(8).error('En fazla 8 adet portfolyo ekleyebilirsiniz.'),
+      description: 'Ana sayfadaki projeler bölümünde gösterilecek ve sürükle-bırak yöntemiyle sıralanacak portfolyo ögeleri.',
+    }),
+    defineField({
       name: 'aboutSectionTitle',
       title: 'Hakkımda Bölümü Başlığı',
       type: 'string',

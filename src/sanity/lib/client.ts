@@ -19,9 +19,10 @@ export async function sanityFetch<const QueryString extends string>({
   revalidate?: number | false
   tags?: string[]
 }) {
+  const isDev = process.env.NODE_ENV === 'development'
   return client.fetch(query, params, {
     next: {
-      revalidate: tags.length > 0 ? false : revalidate, // if tags are provided, we use tag-based revalidation
+      revalidate: isDev ? 0 : (tags.length > 0 ? false : revalidate), // disable cache in development, use tag-based in production
       tags,
     },
   })

@@ -53,8 +53,21 @@ export default function Footer({ settings }: { settings: any }) {
           </a>
         </div>
         
-        <div className="text-[10px] font-light text-white/30 uppercase tracking-widest mt-8">
-          © {new Date().getFullYear()} {settings?.title || "Recai Güneş"}. Tüm hakları saklıdır.
+        <div className="flex flex-col items-center gap-2 text-[10px] font-light text-white/30 uppercase tracking-widest mt-8">
+          <div>
+            © {new Date().getFullYear()} {settings?.title || "Recai Güneş"}. Tüm hakları saklıdır.
+          </div>
+          <div>
+            Tasarım ve Geliştirme:{' '}
+            <a 
+              href="https://yaytechstudio.com/" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              className="text-white/50 hover:text-gold transition-colors duration-300 normal-case"
+            >
+              Yaytech Studio
+            </a>
+          </div>
         </div>
       </div>
     </footer>
